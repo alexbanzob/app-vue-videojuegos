@@ -1,15 +1,10 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="pagina">
+    <h2>Sobre Nosotros</h2>
+    <p>Web desarrollada para la Actividad 1 de Web Dinámica.</p>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
+<style scoped>
+.pagina { text-align: center; padding: 2rem; }
 </style>

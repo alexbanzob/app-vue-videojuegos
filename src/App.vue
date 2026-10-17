@@ -1,85 +1,79 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div>
+    <!-- Cabecera global -->
+    <AppHeader />
+    
+    <!-- Menú de Navegación (Pide el punto 2.2) -->
+    <nav class="menu">
+      <RouterLink to="/">Inicio</RouterLink> |
+      <RouterLink to="/catalogo">Catálogo de Juegos</RouterLink> |
+      <RouterLink to="/sobre-nosotros">Sobre Nosotros</RouterLink>
+    </nav>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <!-- Aquí se cargará la vista dependiendo de donde hagamos clic -->
+    <main>
+      <RouterView />
+    </main>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <!-- Pie de página global -->
+    <AppFooter />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script>
+// Importamos solo los componentes globales
+import AppHeader from './components/AppHeader.vue';
+import AppFooter from './components/AppFooter.vue';
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+export default {
+  name: 'App',
+  components: {
+    AppHeader,
+    AppFooter
   }
+}
+</script>
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+<style>
+/* Estilo global para toda la página */
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+/* Estilo del menú de navegación */
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-color: #1e1e1e;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
+.menu a {
+  text-decoration: none;
+  color: #a0a0a0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
 
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+/* Efecto al pasar el ratón */
+.menu a:hover {
+  color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+/* Efecto para la página actual activa */
+.menu a.router-link-exact-active {
+  color: #121212;
+  background-color: #4CAF50;
+  box-shadow: 0 0 10px #4CAF50;
 }
 </style>
